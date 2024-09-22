@@ -1,0 +1,32 @@
+{% extends 'index_template.html' %}}
+
+{% block content %}
+    <h3>Новый пользователь</h3>
+ <section >
+     <span class="text-info">{{ message }}</span>
+    <form action="" method="post">
+         {{ form.hidden_tag() }}
+        <p>
+            {{ form.username.label() }} {{ form.username() }}
+        </p>
+        <p>
+            {{ form.pass1.label() }} {{ form.pass1() }}
+        </p>
+        <p>
+            {{ form.pass2.label() }} {{ form.pass2() }}
+        </p>
+        <p>
+            {{ form.submit() }}
+        </p>
+
+    </form>
+
+</section>
+{% endblock %}
+
+
+{% block left %}
+    <aside class="left">
+    </aside>
+
+{% endblock %}

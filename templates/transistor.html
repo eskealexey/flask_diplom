@@ -1,0 +1,71 @@
+{% extends 'index_template.html' %}}
+
+{% block content %}
+<div class="label"><h1>{{ title }}</h1></div>
+<div class="found">
+    <form action="/find" method="post">
+        <button type="submit">Поиск</button><input type="text" maxlength="20" name="find">
+    </form>
+</div>
+<section >
+<table class="table" width="100%" style="margin auto">
+    <thead>
+    <tr>
+        <th>Название</th>
+        <th>Маркировка</th>
+        <th>Тип</th>
+        <th>Корпус</th>
+        <th>Кол-во, шт.</th>
+        <th>Путь к DataSheet</th>
+    </tr>
+    </thead>
+ <tbody>
+    {% for tr in transistors %}
+    <tr>
+        <td>
+            <a href="/transistor/{{tr.id}}"> {{ tr.name }} </a>
+        </td>
+        <td>
+        {{ tr.markname }}
+        </td>
+        <td>
+        {{ tr.types.type_name }}
+        </td>
+        <td>
+        {{ tr.korpuss.korpus_name }}
+        </td>
+        <td>
+        {{ tr.amount }}
+        </td>
+        <td>
+
+        {% if tr.path_file %}
+             <p><a href="/uploads/{{tr.path_file}}"> DataSheet</a></p>
+
+
+        {% else %}
+            <p>
+                <span class="fst-italic text-info">отсутствует</span>
+            </p>
+        {% endif %}
+
+        </td>
+    </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+
+
+    </div>
+
+</section>
+{% endblock %}
+
+{% block left %}
+<aside class="left">
+    <a href="/create"> <button type="button"> <b>Добавить<br> транзистор <br>в каталог </b></button></a>
+
+
+</aside>
+{% endblock %}

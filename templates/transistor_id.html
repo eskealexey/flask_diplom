@@ -1,0 +1,64 @@
+{% extends 'index_template.html' %}}
+
+{% block content %}
+ <h2>{{ title }} <u>{{transistor.name}}</u><a href="/transistor/edit/{{ transistor.id }} ">
+        <img src="{{ url_for('static', filename='img/edit.png') }}" width="30" height="30" title="редактировать"/></a>
+
+
+ </h2>
+
+<section >
+    <p><i>Маркировка:</i> <b>{{ transistor.markname }}</b></p>
+    <p><i>Тип:</i> <b>{{ types.type_name }}</b></p>
+    <p><i>Корпус:</i> <b>{{ korpus.korpus_name }}</b></p>
+    <p><i>Краткое описание:</i> <br>
+       <b>{{ transistor.descr }}</b></p>
+    <p><i>Количество, шт.:</i>  <b>{{ transistor.amount }} </b></p>
+ {% if transistor.path_file %}
+    <p><a href="/uploads/{{transistor.path_file}}"> DataSheet</a></p>
+{% else %}
+
+        <p>
+        <span class="fst-italic text-info">DataSheet отсутствует</span>
+        </p>
+ {% endif %}
+    <p><input type="button" onclick="history.back();" value="Назад"/></p>
+
+</section>
+{% endblock %}
+
+
+{% block left %}
+    <aside class="left">
+        <form method="post" action="/amount" >
+
+            <p>
+                <label for="quantity">Кол-во:</label><br>
+                <input type="text" size="3" name="quantity" id="quantity" value="0" placeholder="шт." >
+            </p>
+            <p>
+                <input name="act" type="radio" value="add" > Добавить<br>
+                <input name="act" type="radio" value="del" >Удалить
+            </p>
+            <p><input type="hidden" name="trid" value="{{ transistor.id }}"></p>
+       <p><button type="submit">Выполнить</button></p>
+        </form>
+
+
+     <p>
+        <form method="post" action="/upload" enctype="multipart/form-data">
+        <p>
+        <label for="path_file">Загрузить DataSheet:</label><br>
+        <input type="file" name="path_file" id="path_file">
+        <input type="hidden" name="trid" id="trid" value="{{transistor.id}}">
+
+    </p>
+        <p>
+            <button type="submit">Загрузить</button>
+        </p>
+        </form>
+
+
+    </aside>
+
+{% endblock %}

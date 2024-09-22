@@ -1,0 +1,68 @@
+{% extends 'index_template.html' %}}
+
+{% block content %}
+ <h2>{{ title }}</h2>
+
+<section >
+    <form method="post" action="" enctype="multipart/form-data">
+       <p>
+           <label for="name">Наименование:</label><br>
+           <input type="text" name="name" id="name" maxlength="20" value="{{transistor.name}}">
+       </p>
+       <p>
+           <label for="markname">Маркировка:</label><br>
+           <input type="text" name="markname" id="markname" maxlength="20" value="{{transistor.markname}}">
+       </p>
+       <p>
+           <label for="type_">Тип транзистора:</label><br>
+            <select id="type_" name="type_">
+
+               {% for t in types%}
+                    {% if t.id == transistor.type_ %}
+                        <option value="{{t.id}}" selected>{{t.type_name}}</option>
+                    {% else %}}
+                        <option value="{{t.id}}">{{t.type_name}}</option>
+                    {% endif %}
+               {% endfor %}
+            </select>
+       </p>
+       <p>
+           <label for="korpus">Корпус:</label><br>
+           <select id="korpus" name="korpus">
+               {% for k in korpus %}
+                   {% if k.id == transistor.korpus %}
+                        <option value="{{k.id}}" selected>{{k.korpus_name}}</option>
+                   {% else %}
+                        <option value="{{k.id}}">{{k.korpus_name}}</option>
+                   {% endif %}
+               {% endfor %}
+           </select>
+       </p>
+       <p>
+           <label for="descr">Краткое описание:</label><br>
+           <textarea name="descr" id="descr" cols="50" rows="10">{{ transistor.descr }} </textarea>
+       </p>
+
+       <p>
+          <input type="hidden" name="user_id" id="user_id" value="{{transistor.userid}}" >
+          <input type="hidden" name="trid" id="trid" value="{{transistor.id}}" >
+       </p>
+
+     <p>
+       <button type="submit">Изменить</button>
+     </p>
+
+   </form>
+
+</section>
+{% endblock %}
+
+
+{% block left %}
+    <aside class="left">
+
+
+
+    </aside>
+
+{% endblock %}

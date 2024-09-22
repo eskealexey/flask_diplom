@@ -1,0 +1,44 @@
+
+CREATE TABLE transistors (
+        id INTEGER NOT NULL, 
+        name VARCHAR NOT NULL, 
+        markname VARCHAR, 
+        type_ INTEGER, 
+        korpus INTEGER, 
+        descr VARCHAR, 
+        amount INTEGER, 
+        path_file VARCHAR, 
+        userid INTEGER, 
+        PRIMARY KEY (id), 
+        FOREIGN KEY(type_) REFERENCES type_ (id), 
+        FOREIGN KEY(korpus) REFERENCES korpus (id), 
+        FOREIGN KEY(userid) REFERENCES users (id)
+)
+
+
+
+CREATE TABLE type_ (
+        id INTEGER NOT NULL, 
+        type_name VARCHAR, 
+        PRIMARY KEY (id)
+)
+
+
+
+CREATE TABLE korpus (
+        id INTEGER NOT NULL, 
+        korpus_name VARCHAR, 
+        PRIMARY KEY (id)
+)
+
+
+
+CREATE TABLE users (
+        id INTEGER NOT NULL, 
+        username VARCHAR NOT NULL, 
+        password VARCHAR NOT NULL, 
+        status INTEGER, 
+        PRIMARY KEY (id), 
+        UNIQUE (username)
+)
+

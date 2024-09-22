@@ -1,0 +1,29 @@
+{% extends 'index_template.html' %}}
+
+{% block content %}
+    <h3>Авторизация</h3>
+ <section >
+     {{ message }}
+    <form action="" method="post">
+          {{ form.hidden_tag() }}
+        <p>
+            {{ form.username.label() }} {{ form.username() }}
+        </p>
+        <p>
+            {{ form.password.label() }} {{ form.password() }}
+        </p>
+
+        <p>
+            {{ form.submit() }}
+        </p>
+    </form>
+
+</section>
+{% endblock %}
+
+
+{% block left %}
+    <aside class="left">
+    </aside>
+
+{% endblock %}

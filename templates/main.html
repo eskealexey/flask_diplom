@@ -1,0 +1,39 @@
+{% extends 'index_template.html' %}}
+
+{% block content %}
+ <h2 style="text-align: center">Тема дипломной работы по Python разработке:</h2>
+                <h4 style="text-align: center">"Анализ и сравнение написания web-приложений с использованием разных
+                    фреймворков: Разработать простые веб-приложения с использованием Django, Flask и FastAPI,
+                    провести их сравнение."</h4>
+                <u><h2 style="text-align: center">фреймворк Flask</h2></u>
+{% endblock %}
+
+
+
+{% block left %}
+    <aside class="left">
+
+
+
+
+
+{% if request.cookies.get('userid') %}
+<span><i>Работает:</i> <b>{{request.cookies.get('username')}}</b></span>
+   <p><a href="/logout"><button class="button">Выйти</button></a></p>
+
+{% else %}
+
+                 <p><a href="/registr">Регистрация</a></p>
+            <p><a href="/login"><button class="button">Вход</button></a></p>
+
+
+{% endif %}
+
+
+
+
+
+
+    </aside>
+
+{% endblock %}
